@@ -9,8 +9,8 @@ namespace MyBooks.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string AuthorsName { get; set; }
-        public string AuthorsSurname { get; set; }
+        public string AuthorName { get; set; }
+        public string AuthorSurname { get; set; }
         public int YearOfPublish { get; set; }
         public int GenreId { get; set; }
     }
