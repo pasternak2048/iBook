@@ -5,14 +5,19 @@ using System.Web;
 using System.Web.Mvc;
 using MyBooks.Storage;
 using System.Xml.Linq;
+using MyBooks.Models;
 
 namespace MyBooks.Controllers
 {
     public class HomeController : Controller
     {
+        string _xmlPathBooks = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Books/MyBooks.xml";
+        string _xmlPathGenres = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Books/Genres.xml";
         public ActionResult Index()
         {
             StartUp();
+            List<Book> _books = new XMLStorage().ReturnAllItemsFromXml<Book>(_xmlPathBooks);
+            ViewBag.Books = _books;
             return View();
         }
 
@@ -32,8 +37,7 @@ namespace MyBooks.Controllers
 
         public void StartUp ()
         {
-            string _xmlPathBooks = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Books/MyBooks.xml";
-            string _xmlPathGenres = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Books/Genres.xml";
+            
             if (System.IO.File.Exists(_xmlPathGenres) == false)
             {
                 XDocument xdoc = new XDocument(new XElement("ArrayOfGenre"));
