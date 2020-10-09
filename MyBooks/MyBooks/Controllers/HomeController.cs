@@ -81,8 +81,7 @@ namespace MyBooks.Controllers
         public string DeleteBook(string Name) //delete book from xml file
         {
             if (!new ExtFunctions().IsBookExist(Name, Storages._xmlPathBooks))
-            {
-                ViewBag.Message = "Wrong value: BookID. (does not exist).";
+            { 
                 return "Wrong value: Name. (does not exist).";
             }
             new XMLStorage().DeleteBook(Name, Storages._xmlPathBooks);

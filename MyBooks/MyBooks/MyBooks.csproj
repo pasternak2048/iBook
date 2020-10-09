@@ -128,7 +128,7 @@
     <Compile Include="Models\ExtFunctions.cs" />
     <Compile Include="Models\Storages.cs" />
     <Compile Include="Models\Genre.cs" />
-    <Compile Include="Models\IEntity.cs" />
+    <Compile Include="Models\Interfaces\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage\XMLStorage.cs" />
   </ItemGroup>

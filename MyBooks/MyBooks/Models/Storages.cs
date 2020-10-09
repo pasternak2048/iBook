@@ -31,7 +31,6 @@ namespace MyBooks.Models
                 Thread.Sleep(50000);
             }
         }
-
         static async Task SynchronizeXMLAsync()
         {
             await Task.Run(() => SynchronizeXML());
