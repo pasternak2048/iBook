@@ -50,7 +50,10 @@ namespace MyBooks.Controllers
         [HttpPost]
         public string AddBook(Book book) //add book to xml file
         {
-            
+            if(book.Name==null)
+            {
+                return "Wrong value: Name. (null).";
+            }
             if (new ExtFunctions().IsBookExist(book.Name, Storages._xmlPathBooks))
             {
                 return "Wrong value: Name. (already exist).";

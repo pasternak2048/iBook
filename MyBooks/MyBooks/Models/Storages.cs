@@ -12,8 +12,8 @@ namespace MyBooks.Models
 {
     public static class Storages
     {
-        public static string _xmlPathBooks = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Books/MyBooks.xml";
-        public static string _xmlPathGenres = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/Books/Genres.xml";
+        public static string _xmlPathBooks = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "//MyBooks.xml";
+        public static string _xmlPathGenres = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "//Genres.xml";
         public static List<Book> Books => new XMLStorage().ReturnAllItemsFromXml<Book>(_xmlPathBooks);
         public static List<Genre> Genres => new XMLStorage().ReturnAllItemsFromXml<Genre>(_xmlPathGenres);
         static Storages()
