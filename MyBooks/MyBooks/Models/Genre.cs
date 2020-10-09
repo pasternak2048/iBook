@@ -11,10 +11,10 @@ namespace MyBooks.Models
 {
     [Serializable]
     [XmlInclude(typeof(Book))]
-    public class Genre
+    public class Genre :IEntity
     {
         [Key]
-        public int GenreId { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
 
         [XmlIgnore]

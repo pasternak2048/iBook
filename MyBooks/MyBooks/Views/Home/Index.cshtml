@@ -7,7 +7,7 @@
 <style type="text/css">
     TABLE {
         border-collapse: collapse;
-        width: 300px;
+        /*width: 300px;*/
     }
 
     TH, TD {
@@ -26,26 +26,29 @@
 
 <table>
     <tr>
-        <td><p>ID</p></td>
+        
         <td><p>NAME</p></td>
         <td><p>AUTHOR NAME</p></td>
         <td><p>AUTHOR SURNAME</p></td>
         <td><p>YEAR</p></td>
         <td><p>GENRE</p></td>
+        
     </tr>
     @foreach (Book i in ViewBag.Books)
     {
-        <tr>
-            <td><p>@i.BookId </p></td>
-            <td><p>@i.Name</p></td>
-            <td><p>@i.AuthorName</p></td>
-            <td><p>@i.AuthorSurname</p></td>
-            <td><p>@i.YearOfPublish</p></td>
-            <td><p>@i.Genre.Name</p></td>
-        </tr>
+<tr>
+    
+    <td><p>@i.Name</p></td>
+    <td><p>@i.AuthorName</p></td>
+    <td><p>@i.AuthorSurname</p></td>
+    <td><p>@i.YearOfPublish</p></td>
+    <td><p>@i.Genre.Name</p></td>
+</tr>
+        
     }
 </table>
 
-@Html.Partial("AddBook");
+@Html.Partial("AddBook")
+@Html.Partial("DeleteBook")
 
     

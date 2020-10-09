@@ -1,11 +1,10 @@
 ﻿<h2>Add Book</h2>
-
+@using MyBooks.Storage;
+@using MyBooks.Models;
+@model Book
 <form method="post" action="/Home/AddBook">
     <table>
-        <tr>
-            <td><p>Book Id: </p></td>
-            <td><input type="text" name="BookId" /> </td>
-        </tr>
+        
         <tr>
             <td><p>Name: </p></td>
             <td><input type="text" name="Name" /> </td>
@@ -24,9 +23,12 @@
         </tr>
 
         <tr>
-            <td><p>Genre ID: </p></td>
-            <td><input type="text" name="GenreId" /> </td>
+            <td><p>Genre: </p></td>
+            <td>
+                @Html.DropDownListFor(m => m.GenreId,
+                     new SelectList(Storages.Genres, "Id", "Name"))
+                    </td>
         </tr>
     </table>
-    <td><input type="submit" value="Save" /> </td>
+    <input type="submit" value="Save" />
 </form>

@@ -1,0 +1,18 @@
+﻿@using MyBooks.Storage;
+@using MyBooks.Models;
+@model Book
+<h2>Delete Book</h2>
+<form method="post" action="/Home/DeleteBook">
+    <table>
+        <tr>
+            <td><p>Book Name: </p></td>
+            @*<td><input type="text" name="Name" /> </td>*@
+            <td>
+                @Html.DropDownListFor(m => m.Name,
+                     new SelectList(Storages.Books, "Name", "Name"))
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Delete" />
+</form>
+<div>@ViewBag.Message</div>

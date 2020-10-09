@@ -8,16 +8,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace MyBooks.Models
 {
     [Serializable]
-    public class Book
+    public class Book : IEntity
     {
         [Key]
-        public int BookId { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string AuthorName { get; set; }
         public string AuthorSurname { get; set; }
         public int YearOfPublish { get; set; }
         [ForeignKey("Genre")]
-        public int GenreId { get; set; }
+        public Guid GenreId { get; set; }
         public virtual Genre Genre { get; set; }
 
     }

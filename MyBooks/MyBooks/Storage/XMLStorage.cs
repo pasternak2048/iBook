@@ -18,7 +18,7 @@ namespace MyBooks.Storage
             XDocument xDoc = XDocument.Load(_xmlPathGenres);
             xDoc.Element("ArrayOfGenre").Add(
                         new XElement("Genre",
-                        new XElement("GenreId", _genre.GenreId),
+                        new XElement("Id", _genre.Id),
                         new XElement("Name", _genre.Name)));
             xDoc.Save(_xmlPathGenres);
         }
@@ -28,16 +28,26 @@ namespace MyBooks.Storage
             XDocument xDoc = XDocument.Load(_xmlPathBooks);
             xDoc.Element("ArrayOfBook").Add(
                 new XElement("Book",
-                new XElement("BookId", _book.BookId),
+                new XElement("Id", Guid.NewGuid()),
                 new XElement("Name", _book.Name),
                 new XElement("AuthorName", _book.AuthorName),
                 new XElement("AuthorSurname", _book.AuthorSurname),
                 new XElement("YearOfPublish", _book.YearOfPublish),
-                new XElement("GenreId", _book.Genre.GenreId),
+                new XElement("GenreId", _book.Genre.Id),
                 new XElement("Genre",
-                    new XElement("GenreId", _book.Genre.GenreId),
+                    new XElement("Id", _book.Genre.Id),
                     new XElement("Name", _book.Genre.Name))));
             xDoc.Save(_xmlPathBooks);
+        }
+
+        public void DeleteBook(string bookName, string _xmlPath)
+        {
+            XDocument xDoc = XDocument.Load(_xmlPath);
+            xDoc.Element("ArrayOfBook")
+                .Elements("Book")
+                .Where(x => (string)x.Element("Name") == bookName)
+                .Remove();
+            xDoc.Save(_xmlPath);
         }
 
         public List<T> ReturnAllItemsFromXml<T>(string _xmlPath) where T: class
